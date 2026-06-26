@@ -5,11 +5,13 @@ import { compactProfile, readProfile } from "./cortex/profile.js";
 import { cortexPaths, displayPath, ensureCortexDir } from "./cortex/storage.js";
 import { listResources } from "./mcp/resources.js";
 import { serve } from "./mcp/server.js";
+import { setupCommand } from "./setup.js";
 import { TOOLS } from "./schemas.js";
 
 export function main(argv) {
   const [command = "serve", ...args] = argv;
   if (command === "serve") return serve();
+  if (command === "setup") return setupCommand(args);
   if (command === "init") return initCommand(args[0] ?? "generic");
   if (command === "inspect") return inspectCommand(args[0] ?? "project");
   if (command === "compact") return compactCommand(args[0] ?? "project");
@@ -74,9 +76,16 @@ function helpCommand() {
 
 Usage:
   cortex-taste serve              Start stdio MCP server
+  cortex-taste setup [options]    Configure Cortex Taste in supported MCP hosts
   cortex-taste init [host]        Print MCP host configuration
   cortex-taste inspect [scope]    Show cortex-taste.md
   cortex-taste compact [scope]    Compact cortex-taste.md
   cortex-taste doctor             Validate local files and server metadata
+
+Setup options:
+  --agent <name>                  claude, codex, cursor, gemini, or all
+  --scope <scope>                 user or project
+  --prefer-global                 Use "cortex-taste serve" instead of npx
+  --dry-run                       Print actions without writing config
 `);
 }

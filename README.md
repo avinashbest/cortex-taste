@@ -92,8 +92,6 @@ npx cortex-taste@latest setup --scope user
 npx cortex-taste@latest setup --scope project
 ```
 
-Current repository note: the local implementation does not yet include the `setup` command, and `package.json` is still private. Until publishing is enabled, use the local development commands below.
-
 Check the local server:
 
 ```bash
