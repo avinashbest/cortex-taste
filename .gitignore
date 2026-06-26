@@ -5,3 +5,4 @@ node_modules/
 .codex/memory/
 .codex/plan/
 npm-debug.log*
+
