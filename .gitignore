@@ -3,4 +3,5 @@ node_modules/
 .idea/
 .cortex/
 .codex/memory/
+.codex/plan/
 npm-debug.log*
